@@ -1,0 +1,56 @@
+#
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements. See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership. The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License. You may obtain a copy of the License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing,
+# software distributed under the License is distributed on an
+# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+# KIND, either express or implied. See the License for the
+# specific language governing permissions and limitations
+# under the License.
+#
+project(tuto_thrift)
+cmake_minimum_required(VERSION 2.8.3)
+
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+
+SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+
+#Make sure gen-cpp files can be included
+include_directories("${CMAKE_CURRENT_BINARY_DIR}")
+include_directories("${CMAKE_CURRENT_BINARY_DIR}/gen-cpp")
+
+SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
+find_package(Boost REQUIRED)
+find_package(Thrift REQUIRED)
+INCLUDE_DIRECTORIES(${THRIFT_INCLUDE_DIR})
+
+MESSAGE(${THRIFT_INCLUDE_DIR})
+
+set(tutorialgencpp_SOURCES
+    gen-cpp/Calculator.cpp
+    gen-cpp/SharedService.cpp
+    gen-cpp/shared_constants.cpp
+    gen-cpp/shared_types.cpp
+    gen-cpp/tutorial_constants.cpp
+    gen-cpp/tutorial_types.cpp
+)
+add_library(tutorialgencpp STATIC ${tutorialgencpp_SOURCES})
+
+
+add_executable(TutorialServer CppServer.cpp)
+target_link_libraries(TutorialServer tutorialgencpp ${THRIFT_LIBRARIES})
+
+add_executable(TutorialClient CppClient.cpp)
+target_link_libraries(TutorialClient tutorialgencpp ${THRIFT_LIBRARIES})
+

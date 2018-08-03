@@ -1,0 +1,5 @@
+/home/david/dev/thrift/tuto/build/CMakeFiles/edit_cache.dir
+/home/david/dev/thrift/tuto/build/CMakeFiles/TutorialClient.dir
+/home/david/dev/thrift/tuto/build/CMakeFiles/TutorialServer.dir
+/home/david/dev/thrift/tuto/build/CMakeFiles/rebuild_cache.dir
+/home/david/dev/thrift/tuto/build/CMakeFiles/tutorialgencpp.dir
