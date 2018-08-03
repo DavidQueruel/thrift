@@ -1,1 +1,1 @@
-/usr/bin/c++    -std=c++11   CMakeFiles/TutorialServer.dir/CppServer.cpp.o  -o TutorialServer -rdynamic libtutorialgencpp.a /usr/local/lib/libthrift.so -Wl,-rpath,/usr/local/lib 
+/usr/bin/c++    -std=c++11   CMakeFiles/TutorialServer.dir/CppServer.cpp.o  -o TutorialServer libtutorialgencpp.a /usr/local/lib/libthrift.so -Wl,-rpath,/usr/local/lib 
